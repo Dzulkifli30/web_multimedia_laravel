@@ -2,13 +2,18 @@
 
 use App\Http\Controllers\NewProfileController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/video', [VideoController::class, 'index'])->name('home');
+
 Route::get('/mypage', [NewProfileController::class, 'index']);
+
+Route::post('/upload', [VideoController::class, 'upload'])->name('upload');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
